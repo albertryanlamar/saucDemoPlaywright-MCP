@@ -30,10 +30,3 @@ jobs:
       - name: Generate Allure HTML
         run: |
           allure generate report/allure-results -o report/allure-report --clean
-
-      # Upload reports to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./report
