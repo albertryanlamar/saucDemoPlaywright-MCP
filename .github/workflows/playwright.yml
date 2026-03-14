@@ -24,10 +24,3 @@ jobs:
             -v ${{ github.workspace }}:/usr/src/app \
             -v ${{ github.workspace }}/report:/usr/src/app/report \
             mcp-playwright
-
-      # 4️⃣ (Optional) Upload report folder as artifact
-      - name: Upload report
-        uses: actions/upload-artifact@v3
-        with:
-          name: MCP-Report
-          path: report
