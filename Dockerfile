@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 # Copy MCP config
-COPY .vscode/mcp.json ./  # MCP config
+COPY .vscode/mcp.json ./mcp.json
 
 # Copy rest of project
 COPY . .
