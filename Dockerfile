@@ -8,7 +8,7 @@ RUN npm install -g playwright allure-commandline
 WORKDIR /app
 
 # Copy package.json and MCP config
-COPY package*.json ./
+COPY package.json ./
 COPY .vscode/mcp.json ./
 
 # Install project dependencies
