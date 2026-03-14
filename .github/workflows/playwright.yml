@@ -2,7 +2,7 @@ name: CI/CD Playwright + MCP
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
 
 jobs:
   run_tests:
