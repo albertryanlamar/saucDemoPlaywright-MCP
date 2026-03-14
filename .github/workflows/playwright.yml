@@ -9,24 +9,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repo
-      - uses: actions/checkout@v4
+      # 1️⃣ Checkout repo
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      # Build Docker container
+      # 2️⃣ Build Docker container
       - name: Build Docker
         run: docker build -t mcp-playwright .
 
-      # Run tests in container
+      # 3️⃣ Run Playwright + MCP tests in container
       - name: Run Playwright + MCP
         run: |
           mkdir -p report
-          docker run -v ${{ github.workspace }}/report:/app/report mcp-playwright
+          docker run --rm \
+            -v ${{ github.workspace }}/report:/app/playwright-report \
+            mcp-playwright \
+            npx playwright test --reporter=all
 
-      # Install Allure (for generating HTML report)
+      # 4️⃣ Install Allure CLI
       - name: Install Allure CLI
         run: npm install -g allure-commandline --save-dev
 
-      # Generate Allure report
+      # 5️⃣ Generate Allure HTML report
       - name: Generate Allure HTML
         run: |
-          allure generate report/allure-results -o report/allure-report --clean
+          allure generate report/playwright-report/allure-results -o report/allure-report --clean
