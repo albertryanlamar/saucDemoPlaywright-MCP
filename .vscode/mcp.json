@@ -1,0 +1,17 @@
+{
+	"servers": {
+		"playwright": {
+			"command": "npx",
+			"args": [
+				"@playwright/mcp@latest"
+			],
+			"type": "stdio"
+		}
+	},
+	"inputs": [    
+		{
+      		"name": "testPlannerPath",
+      		"value": "../docs/test-plan.md"
+    	}
+    ]
+}

@@ -1,0 +1,28 @@
+{
+  "testCases": [
+    {
+      "testCaseId": "TC_LOGIN_001",
+      "name": "Valid Login",
+      "description": "Verify users can login with valid credentials",
+      "steps": [
+        { "action": "navigate", "url": "/login" },
+        { "action": "fill", "field": "username", "value": "" },
+        { "action": "fill", "field": "password", "value": "" },
+        { "action": "click", "target": "login_button" },
+        { "action": "verify", "target": "dashboard" }
+      ]
+    },
+    {
+      "testCaseId": "TC_LOGIN_002",
+      "name": "Invalid Password",
+      "description": "Verify login fails with wrong password",
+      "steps": [
+        { "action": "navigate", "url": "/login" },
+        { "action": "fill", "field": "username", "value": "" },
+        { "action": "fill", "field": "password", "value": "wrong_password" },
+        { "action": "click", "target": "login_button" },
+        { "action": "verify", "target": "error_message" }
+      ]
+    }
+  ]
+}
