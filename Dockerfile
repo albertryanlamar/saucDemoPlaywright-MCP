@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Copy package.json and MCP config
 COPY package*.json ./
-COPY mcp.json ./
+COPY .vscode/mcp.json ./
 
 # Install project dependencies
 RUN npm install
