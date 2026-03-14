@@ -26,6 +26,6 @@ jobs:
         run: |
           docker run \
           -e BASE_URL=${{ secrets.BASE_URL }} \
-          -e USERNAME=${{ secrets.USERNAME }} \
-          -e PASSWORD=${{ secrets.PASSWORD }} \
+          -e USERNAME=${{ secrets.VALID_USERNAME }} \
+          -e PASSWORD=${{ secrets.VALID_PASSWORD }} \
           agentic-playwright
