@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ci": "npx mcp-agent run --agent agents/playwright-test-generator.yaml && npx playwright test"
+    "ci": "npx mcp-agent run --agent agents/playwright-test-generator.yml && npx playwright test"
   },
   "repository": {
     "type": "git",
