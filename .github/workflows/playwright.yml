@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Build Docker container
+      # 2️⃣ Build Docker image
       - name: Build Docker
         run: docker build -t mcp-playwright .
 
@@ -21,6 +21,13 @@ jobs:
       - name: Run MCP + Playwright
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/app \
-            mcp-playwright \
-            npx playwright test
+            -v ${{ github.workspace }}:/usr/src/app \
+            -v ${{ github.workspace }}/report:/usr/src/app/report \
+            mcp-playwright
+
+      # 4️⃣ (Optional) Upload report folder as artifact
+      - name: Upload report
+        uses: actions/upload-artifact@v3
+        with:
+          name: MCP-Report
+          path: report

@@ -1,24 +1,24 @@
-# Base Node image
-FROM node:20
-
-# Install dependencies
-RUN npm install -g playwright allure-commandline
+# Base Node.js image
+FROM node:20-bullseye
 
 # Set working dir
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy package.json and MCP config
-COPY package.json ./
-COPY .vscode/mcp.json ./
+# Copy package files and install deps
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Install project dependencies
-RUN npm install
+# Copy MCP config
+COPY .vscode/mcp.json ./  # MCP config
 
-# Copy entire project
+# Copy rest of project
 COPY . .
 
-# Expose MCP port if needed
-EXPOSE 4000
+# Install Playwright browsers + deps
+RUN npx playwright install --with-deps
 
-# Default command to start MCP + Playwright tests
-CMD ["npx", "playwright", "run-test-mcp-server"]
+# Expose report folder
+VOLUME ["/usr/src/app/report"]
+
+# Default command: run MCP then Playwright
+CMD ["npx", "mcp", "run"]
