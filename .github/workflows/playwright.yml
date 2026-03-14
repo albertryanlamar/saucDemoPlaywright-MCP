@@ -1,26 +1,31 @@
-name: CI/CD Playwright + MCP
+name: Playwright MCP Automation
 
 on:
+
   push:
-    branches: [dev]
+    branches: [ main ]
+
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  run_tests:
+
+  test:
+
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repo
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Build Docker image
-      - name: Build Docker
-        run: docker build -t mcp-playwright .
+      - name: Build Docker Image
+        run: docker build -t agentic-playwright .
 
-      # 3️⃣ Run MCP inside container
-      - name: Run MCP + Playwright
+      - name: Run Tests
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/usr/src/app \
-            -v ${{ github.workspace }}/report:/usr/src/app/report \
-            mcp-playwright
+          docker run \
+          -e BASE_URL=${{ secrets.BASE_URL }} \
+          -e USERNAME=${{ secrets.USERNAME }} \
+          -e PASSWORD=${{ secrets.PASSWORD }} \
+          agentic-playwright

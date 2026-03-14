@@ -4,7 +4,7 @@
 Document the test cases and data-driven approach for login feature.
 
 ## Test Case Overview
-All test cases stored in: `testdata/tc/testcases.json`
+All test cases stored in: `testdata/tc/testcase.json`
 
 | Test Case ID | Name               | Description |
 |--------------|------------------|-------------|
@@ -17,7 +17,7 @@ Stored in: `.env.staging`
 - username / password combinations for data-driven execution
 
 ## Execution Flow
-1. Load JSON test cases from `testdata/tc/testcases.json`
+1. Load JSON test cases from `testdata/tc/testcase.json`
 2. Loop through each test case and data row
 3. Execute steps and verify expected results
 4. Generate report

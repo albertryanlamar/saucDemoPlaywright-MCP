@@ -1,24 +1,13 @@
-# Base Node.js image
-FROM node:20-bullseye
+FROM mcr.microsoft.com/playwright:v1.45.0-jammy
 
-# Set working dir
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copy package files and install deps
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json ./
 
-# Copy MCP config
-COPY .vscode/mcp.json ./mcp.json
+RUN npm install
 
-# Copy rest of project
 COPY . .
 
-# Install Playwright browsers + deps
 RUN npx playwright install --with-deps
 
-# Expose report folder
-VOLUME ["/usr/src/app/report"]
-
-# Default command: run MCP then Playwright
-CMD ["npx", "mcp", "run"]
+CMD ["npm","run","ci"]

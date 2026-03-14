@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "ci": "npx mcp-agent run --agent agents/playwright-test-generator.yaml && npx playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/albertryanlamar/saucDemoPlaywright-MCP.git"
@@ -17,10 +19,12 @@
   },
   "homepage": "https://github.com/albertryanlamar/saucDemoPlaywright-MCP#readme",
   "devDependencies": {
+    "@playwright/mcp": "^0.0.68",
     "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.0",
+    "allure-playwright": "^3.6.0"
   },
   "dependencies": {
-    "@playwright/mcp": "^0.0.68"
+    "dotenv": "^17.3.1"
   }
 }
