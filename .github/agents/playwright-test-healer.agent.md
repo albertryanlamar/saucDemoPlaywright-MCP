@@ -12,7 +12,7 @@ tools:
   - playwright-test/test_debug
   - playwright-test/test_list
   - playwright-test/test_run
-model: local-llm
+model: gpt-4o
 mcp-servers:
   playwright-test:
     type: stdio

@@ -28,4 +28,5 @@ jobs:
           -e BASE_URL=${{ secrets.BASE_URL }} \
           -e USERNAME=${{ secrets.VALID_USERNAME }} \
           -e PASSWORD=${{ secrets.VALID_PASSWORD }} \
+          -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
           agentic-playwright npm run ci

@@ -23,7 +23,7 @@ tools:
   - playwright-test/browser_wait_for
   - playwright-test/planner_setup_page
   - playwright-test/planner_save_plan
-model: local-llm
+model: gpt-4o
 mcp-servers:
   playwright-test:
     type: stdio
