@@ -34,7 +34,7 @@ The AI reads your test plan, uses your Page Objects, and controls a live browser
 
 ```mermaid
 graph TD
-    A[Human: Describe Scenario] -->|Natural Language| B(specs/test-plan.md)
+    A[Human: Describe Scenario] -->|Natural Language| B(docs/test-plan.md)
     B --> C{AI Agent}
     C -->|Invokes| D["@playwright/mcp Server"]
     D -->|Controls| E[Live Browser]
