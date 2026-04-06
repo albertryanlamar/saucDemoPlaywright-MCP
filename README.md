@@ -31,6 +31,16 @@ By leveraging <b>@playwright/mcp</b>, we give AI agents a live browser to intera
 ## 🗺️ How It Works
 
 The AI reads your test plan, uses your Page Objects, and controls a live browser via the <b>@playwright/mcp</b> server.
+graph TD
+
+    A[Human: Describe Scenario] -->|Natural Language| B(specs/test-plan.md)
+    B --> C{AI Agent}
+    C -->|Invokes| D["@playwright/mcp Server"]
+    D -->|Controls| E[Live Browser]
+    E -->|Snapshots/DOM| D
+    D -->|Context| C
+    C -->|Writes Code| F(tests/todo.spec.ts)
+    F -->|Self-Heals| C
 
 ---
 
