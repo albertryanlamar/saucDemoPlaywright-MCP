@@ -40,7 +40,7 @@ graph TD
     D -->|Controls| E[Live Browser]
     E -->|Snapshots/DOM| D
     D -->|Context| C
-    C -->|Writes Code| F(tests/todo.spec.ts)
+    C -->|Writes Code| F(src/testdata/tc/testcase.json)
     F -->|Self-Heals| C
 ```
 
